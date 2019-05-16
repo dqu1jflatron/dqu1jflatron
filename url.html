@@ -2,10 +2,11 @@
 	<html>
 	<head>
 		<title>FlatronPlay</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" type="text/css" href="media.css">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width-device-width, initial-scale-1">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="media.css">
+		<link rel="stylesheet" type="text/css" href="menu.css">
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -13,27 +14,47 @@
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#cd1111">
 		<meta name="msapplication-TileColor" content="#ff0000">
 		<meta name="theme-color" content="#ffffff">
+		<script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   		<script src="menu.js"></script>
 	</head>
 	<body>
 		<div class="wrapper">
 		<h1 align=center>FlatronPlay</h1>
-		<ul align=center>
-			<a href="index.html"><li>Главная</li></a>
-			<a href="info.html"><li>Информация</li></a>
-			<a href="url.html"><li class="active">Ссылки</li></a>
+		<ul align=center class="pc-menu-ul">
+			<a href="index.html"><li id="pc-menu">Главная</li></a>
+			<a href="news.html"><li id="pc-menu">Новости</li></a>
+			<a href="info.html"><li id="pc-menu">Информация</li></a>
+			<a href="url.html"><li class="active" id="pc-menu">Ссылки</li></a>
 		</ul>
-		<h2 align=center>Ссылки</h2>
-		<p>Ссылки! <br>
-			<strong> YouTube канал </strong>
-			 <br> - <a href="https://www.youtube.com/channel/UC7P-Tl5cMNwEw7X4D41SHGg">Нажмите здесь</a> - <br> 
-			 <strong>Группа ВК</strong> 
-			 <br> - <a href="https://vk.com/flatronplay">Нажмите здесь</a> - <br>
-			 <strong>Флатрон в ВК</strong> <br>
-			 - <a href="https://vk.com/id173460590">Нажмите здесь</a> - <br>
-			 <strong>Сервер Джу</strong> <br>
-			 - 173.249.58.82:25724  \  MC1.13.2 - <br>
-			 <strong>Сервер Дэйджа</strong> 
-			 <br> - Неизвестно. Дэйдж, предоставь нам IP сервера -</p>
-			</div>
+		<div class="content">
+			<div id='cssmenu'>
+<ul>
+   <li class='active has-sub'><a href='#'><span>Меню</span></a>
+      <ul>
+         <li class='last'><a href='index.html'><span>Главная</span></a>
+         </li>
+         <li class='last'><a href='news.html'><span>Новости</span></a>
+         </li>
+         <li class='last'><a href='info.html'><span>Информация</span></a>
+         </li>
+         <li class='last'><a href='url.html'><span>Ссылки</span></a>
+         </li>
+      </ul>
+   </li>
+</ul>
+</div>
+        <h2>Пусто...</h2>
+		<p>Покачто этот раздел пуст...</p>
+	</div></div>
+	<div class="vk_support">
+		<script type="text/javascript" src="https://vk.com/js/api/openapi.js?160"></script>
+
+		<!-- VK Widget -->
+		<div id="vk_community_messages"></div>
+		<script type="text/javascript">
+		VK.Widgets.CommunityMessages("vk_community_messages", 127153142, {tooltipButtonText: "Есть вопрос?"});
+		</script>
+    </div>
 	</body>
 	</html>

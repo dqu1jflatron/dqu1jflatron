@@ -1,51 +1,103 @@
-			a{
+			#cssmenu {
+        visibility: hidden;
+    }
+            a{
 				text-decoration: none;
-				color: white;
+				color: rgb(255,149,0);
 			}
 			body{
-				padding: 1.5%;
-				background-color: #272B2B;
+				padding: 0;
+                margin: 0;
+				background-color:#fafafa;
 			}
+            strong{
+                color: rgb(255,149,0);
+            }
 			h1{
-				background-color: #2E323A;
-				color: white;
-				font-family: Arial;
-				padding: 6px;
+				background-color: #fafafa;
+				color: #333333;
+				font-family: sans-serif;
+				padding: 0;
+                margin: 2px;
+                margin-top: 16px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 30%;
+                border-radius: 5px;
+                cursor: default;
 			}
-			ul{
+			.pc-menu-ul{
 				list-style-type: none;
-				background-color: #2E323A;
+				background-color: white;
 				padding: 16px;
+                padding-right: 0;
+                padding-left: 0;
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 1px 10px #888888;
 			}
-			li{
-				background-color: #214A56;
+			#pc-menu{
 				display: inline;
-				margin: 2.5%;
+				margin: 3%;
+                margin-top: 0;
+                margin-bottom: 0;
 				padding: 10px;
-				color: white;
-				font-family: arial;
+				color: #df0e0e;
+				font-family: Helvetica;
+                position: relative;
 			}
-			li.active{
-				background-color: #416777;
+			#pc-menu:hover{
+                background-color: #df0e0e;
+                color: white;
+                transition: 0.2s;
+            }
+			#pc-menu.active{
+				background-color: #df0e0e;
+                color: white;
 			}
 			h2{
-				background-color: #2E323A;
-				padding: 5px;
-				font-family: Arial;
-				color: white;
+				font-family: sans-serif;
+				color: rgb(255,59,48);
+                margin-left: auto;
+                margin-right: auto;
+                cursor: default;
+                font-size: 32px;
 			}
 			p{
-				color:white;
-				background-color: #2E323A;
-				text-align: center;
-				padding: 18px;
-				font-family: arial;
-				font-size: 18px;
+				color: #333333;
+				margin-top: 1em;
+				font-family: sans-serif;
+				font-size: 17px;
+				cursor: default;
 			}
-			.wrapper {
+			b{
+                color: #cc3d3d;
+            }
+			.content{
 				width: 940px;
 				margin: 50px auto;
 			}
-			* {
-				transition: all .2s;
-			}
+            button{
+                width: 30%;
+                height: 30px;
+                font-size: 25px;
+                font-family: arial;
+                border: 1px #d60626 solid;
+                border-radius: 50px;
+                color: white;
+                background-color: #d60626;
+                transition: 0.5s;
+                cursor: pointer;
+                margin: 10px;
+            }
+            button:hover{
+                font-size: 28px;
+                width: 35%;
+                color: #ffc4cd;
+                background-color: #d60626;
+            }
+            .url{
+            	font-family: sans-serif;
+            	letter-spacing: 1px;
+            	font-size: 150%;
+            }

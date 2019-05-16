@@ -1,24 +1,41 @@
 @media only screen and (max-width: 992px) {
-	.wrapper {
+	.content {
 		width: 750px;
+	}
+	.wrapper {
+		width: 100%;
+	}
+	#cssmenu {
+		visibility: hidden;
 	}
 }
 
 @media only screen and (max-width: 768px) {
 	.wrapper {
+		width: 100%;
+	}
+	.content {
 		width: 450px;
+	}
+	#cssmenu {
+		visibility: hidden;
 	}
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 485px) {
+	.content {
+		width: 300px;
+	}
 	.wrapper {
-		width: 320px;
+		width: 100%;
 	}
-	li {
-		margin: 1.5%;
-		padding: 5px;
+	.vk_support {
+		visibility: hidden;
 	}
-	p {
-		font-size: 16px;
+	.pc-menu-ul {
+		visibility: hidden;
+	}
+	#cssmenu {
+		visibility: visible;
 	}
 }
