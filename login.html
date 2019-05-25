@@ -1,0 +1,48 @@
+<?php require('php/php.php'); ?>
+<!DOCTYPE html>
+<html>
+</head>
+	<?php include('includes/headtag.html'); ?>
+</head>
+<body>
+	<div class="wrapper">
+	<?php
+	$current_page = 0;
+	include('includes/header.html');
+	include_once('lib/rb-mysql.php');
+	
+	$data = $_POST;
+	if( isset($data['do_login']) ){
+		$errors = array();
+		$userdata = mysqli_query($con, "SELECT * FROM `users` WHERE `login` = '" . $data['login'] . "'");
+		$user = mysqli_fetch_assoc($userdata);
+		if( $user ) {
+			if( password_verify($data['pass'], $user['pass']) ) {
+				$_SESSION['user'] = $user;
+				?>
+				<script type="text/javascript">
+				window.location.href = 'index.html';
+				</script>
+				<?php
+			} else {
+				$errors[] = 'Неверный логин или пароль';
+			}
+		} else {
+			$errors[] = 'Неверный логин или пароль';
+		}
+		if( ! empty($errors) ) {
+			echo '<p style="color:red">' . array_shift($errors) . '</p>';
+		}
+	}
+	?>
+	<div class="content">
+		<h2>Войти</h2>
+		<?php echo '<p style="color:red">' . $errors['0'] . '</p>'; ?>
+		<form action="/login.html" method="POST">
+		<input type="text" name="login" class="php__form_small" placeholder="Логин"/ value="<?php echo @$data['login']; ?>">
+		<input type="password" name="pass" class="php__form_small" placeholder="Пароль"/ value="">
+		<input type="submit" name="do_login" class="php__form_submit" value="Войти"><br><br>
+		</form>
+		<p>Еще нет аккаунта? <a id="clickable" href="signup.html">Регистрация</a></p>
+</body>
+</html>

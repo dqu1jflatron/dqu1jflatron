@@ -1,0 +1,32 @@
+<?php require('php/php.php'); ?>
+<!DOCTYPE html>
+	<html>
+	<head>
+		<?php include('includes/headtag.html'); ?>
+	</head>
+	<body>
+	<div class="wrapper">
+<?php
+	$current_page = 0;
+	include('includes/header.html');
+	if (isset($_GET['logout'])) {
+		unset($_SESSION['user']);
+	?>
+	<script type="text/javascript">
+	window.location.href = 'index.html';
+	</script>
+	<?php
+	} else {
+?>
+		<div class="content">
+        <h2>Личный кабинет</h2>
+		<h3 id="unclickable">Добро пожаловать, <?php echo $_SESSION['user']['login']; ?></h3>
+		<p><a href="user.html?logout=true">Выход</a></p><br>
+		<p id="inline">Никнэйм: <?php echo $_SESSION['user']['login']; ?></p><br>
+		<p id="inline">E-Mail: <?php echo $_SESSION['user']['email']; ?></p><br>
+		<p id="inline">Аватарка: </p><p id="inline"><a href="https://ru.gravatar.com/">Изменить</a></p><br>
+		<?php echo '<img style="width: 256px; height: 256px;" src="https://www.gravatar.com/avatar/' . md5(strtolower(trim($_SESSION['user']['email']))) . '&s=256?d=' . urlencode('https://www.iconsdb.com/icons/preview/black/user-xxl.png') . '"/>'; ?>
+	</div></div>
+	<?php } ?>
+	</body>
+	</html>

@@ -1,0 +1,73 @@
+<?php require('php/php.php'); ?>
+<!DOCTYPE html>
+	<html>
+	<head>
+		<?php include('includes/headtag.html'); ?>
+	</head>
+	<body>
+	<div class="wrapper">
+		<?php
+		$current_page = 0;
+		include('includes/header.html');
+?>
+		<div class="content">
+        
+		<?php article();
+		mysqli_query($con, "UPDATE `articles` SET `views` = `views` + 1 WHERE `id` = " . (int) $_GET['id'] );
+		 ?>
+		 <br><br>
+
+		 <?php
+		 	$art_ca = (int) $_GET['id'];
+		 	global $article;
+		 	if (mysqli_num_rows($article) <= 0) {} else {
+		 ?>
+		 <div id=comment_section>
+		 <h2 id="#comments">Комментарии:</h2><a name="comments"></a>
+		<?php
+			comments();
+		?>
+		<h3 class="comments"><strong>Добавить свой:</strong></h3>
+		<div class="add_comment">
+			<?php
+				if (isset($_SESSION['user'])) {
+			?>
+			<form class="form" method="POST" action="/article.html?id=<?php echo (int) $_GET['id']; ?>#comments"/>
+			<?php
+				global $con;
+				if(isset($_POST['do_post'])) {
+					$errors = array();
+
+					if($_POST['nickname'] == '') {
+						$errors[] = 'Введите никнэйм!';
+					}
+					if($_POST['text'] == '') {
+						$errors[] = 'Введите текст комментария!';
+					}
+
+					if(empty($errors)) {
+						mysqli_query($con, "INSERT INTO `comments` (`author`, `text`, `articles_id`) VALUES ('".mysqli_real_escape_string($con, $_POST['nickname'])."', '".mysqli_real_escape_string($con, $_POST['text'])."', $art_ca)");
+						echo '<p>Комментарий успешно добавлен!</php>';
+					} else {
+						echo '<p>' . $errors['0'] . '</p>';
+					}
+				}
+			?>
+			<input type="text" name="nickname" class="php__form_small" placeholder="Никнэйм"/ value="<?php echo $_POST['nickname'] ?>"><br/>
+			<textarea class="php__form_large" name="text" placeholder="Текст комментария"/><?php echo $_POST['text'] ?></textarea><br/>
+			<input type="submit" name="do_post" class="php__form_submit" value="Добавить">
+			<?php } else { echo '<p>Для того что-бы добавить комментарий вам нужно войти!</p>'; echo '<p><a href="login.html">Войти</a></p>'; } ?>
+		</div>
+	</div> <?php } ?>
+	</div></div>
+	<div class="vk_support">
+		<script type="text/javascript" src="https://vk.com/js/api/openapi.js?160"></script>
+
+		<!-- VK Widget -->
+		<div id="vk_community_messages"></div>
+		<script type="text/javascript">
+		VK.Widgets.CommunityMessages("vk_community_messages", 127153142, {tooltipButtonText: "Есть вопрос?"});
+		</script>
+    </div>
+	</body>
+	</html>

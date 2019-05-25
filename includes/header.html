@@ -1,0 +1,10 @@
+      <div id="title"> <div class="title">Название</div>
+      <div class="login"> <?php  if(isset($_SESSION['user'])){ echo '<a href="user.html">' . $_SESSION['user']['login'] . '</a>'; } else { echo '<a href="login.html">Войти</a>'; }  ?>  </div></div>
+		<ul align=center class="pc-menu-ul">
+			<a href="index.html"><li <?php global $current_page; if ($current_page == 1){echo 'class="active"';} ?> id="pc-menu">Главная</li></a>
+			<a href="news.html"><li <?php global $current_page; if ($current_page == 2){echo 'class="active"';} ?> id="pc-menu">Новости</li></a>
+			<a href="info.html"><li <?php global $current_page; if ($current_page == 3){echo 'class="active"';} ?> id="pc-menu">Информация</li></a>
+			<a href="url.html"><li <?php global $current_page; if ($current_page == 4){echo 'class="active"';} ?> id="pc-menu">Ссылки</li></a>
+		</ul>
+      <h1 class=small>Сайт не оптимизирован для вашего устройства!</h1>
+</div>

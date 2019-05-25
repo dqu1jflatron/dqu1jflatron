@@ -1,0 +1,45 @@
+@media only screen and (min-width: 992px) {
+	.small {
+		visibility: hidden;
+	}
+}
+
+
+@media only screen and (max-width: 992px) {
+	.content {
+		width: 750px;
+	}
+	.wrapper {
+		width: 100%;
+	}
+	#cssmenu {
+		visibility: hidden;
+	}
+	.small {
+		visibility: hidden;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.wrapper {
+		width: 100%;
+	}
+	.content {
+		width: 450px;
+	}
+	#cssmenu {
+		visibility: hidden;
+	}
+	.small {
+		visibility: hidden;
+	}
+}
+
+@media only screen and (max-width: 485px) {
+	* {
+		visibility: hidden;
+	}
+	.small {
+		visibility: visible;
+	}
+}

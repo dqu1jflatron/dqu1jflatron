@@ -1,0 +1,32 @@
+<?php require('php/php.php'); ?>
+<!DOCTYPE html>
+	<html>
+	<head>
+		<?php include('includes/headtag.html'); ?>
+	</head>
+	<body>
+	<div class="wrapper">
+<?php
+	$current_page = 2;
+	include('includes/header.html');
+?>
+		<div class="content">
+        <h2>Новости</h2>
+		<div id="news_vk" align=center><script type="text/javascript" src="https://vk.com/js/api/openapi.js?160"></script>
+
+<!-- VK Widget -->
+<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, height: "400"}, 127153142);
+</script></div>
+		<h2>Архив</h2>
+		<div id="archive">
+		<p>Все самые важные и старые новости прямо здесь.</p>
+		<p><strong>26 октября 2014</strong> Создание канала</p>
+		<p><strong>11 ноября 2016</strong> Первое видео</p>
+		<p><strong>13 мая 2017</strong> Первый стрим</p>
+		<p><strong>1 марта 2019 - 28 апреля 2019</strong> Стримов не было по причине неуплаты за интернет</p>
+</div>
+	</div></div>
+	</body>
+	</html>

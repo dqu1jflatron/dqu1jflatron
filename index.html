@@ -1,0 +1,26 @@
+<?php require('php/php.php'); ?>
+<!DOCTYPE html>
+	<html>
+	<head>
+		<?php include('includes/headtag.html'); ?>
+		<meta name="robots" content="index, nofollow">
+	</head>
+	<body>
+		<div class="wrapper">
+<?php
+	$current_page = 1;
+	include('includes/header.html');
+?>
+		<div class="content">
+        <h2>Кто такой флатрон?</h2>
+		<p>Флатрон - отличный стример по разным играм на YouTube. Флатрона зовут Дмитрий Попов, живет он в России, город Воронеж. Работает в кафе Жар Пицца, учится в колледже.</p>
+		<h2>Стримы</h2>
+		<p>Стримы он проводит на <a href="https://www.youtube.com/channel/UC7P-Tl5cMNwEw7X4D41SHGg">его канале</a>. Чаще всего он стримит Minecraft, где он играет в мини-игры с подписчиками, проводит конкурсы, и т.д. Информацию о стримах можно найти в <a href="https://www.vk.com/flatronplay">группе ВК</a>. В данный момент он стримит редко по причине работы и учебы. </p>
+		<h2>Статьи</h2>
+		<div id="blog">
+			<?php showPosts(); 
+			?>
+		</div>
+	</div></div>
+	</body>
+	</html>

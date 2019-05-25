@@ -1,0 +1,86 @@
+<?php require('php/php.php'); ?>
+<!DOCTYPE html>
+	<html>
+	<head>
+		<?php include('includes/headtag.html'); ?>
+	</head>
+	<body>
+	<div class="wrapper">
+<?php
+	$current_page = 0;
+	include('includes/header.html');
+	include_once('lib/rb-mysql.php');
+	if (isset($_GET['logout'])) {
+		unset($_SESSION['admin_user']);
+	?>
+	<script type="text/javascript">
+	window.location.href = 'index.html';
+	</script>
+	<?php
+	}
+	
+	if ( isset($_SESSION['admin_user']) ) {
+
+	if(isset($_POST['do_articlepost'])) {
+		$errors = array();
+
+		if($_POST['article_name'] == '') {
+			$errors[] = 'Введите название статьи!';
+		}
+		if($_POST['article_text'] == '') {
+			$errors[] = 'Введите текст статьи!';
+		}
+
+		if(empty($errors)) {
+			mysqli_query($con, "INSERT INTO `articles` (`title`, `text`) VALUES ('".mysqli_real_escape_string($con, $_POST['article_name'])."', '".mysqli_real_escape_string($con, $_POST['article_text'])."')");
+			echo '<p>Статья успешно добавлена!</p>';
+		} else {
+			echo '<p>' . $errors['0'] . '</p>';
+		}
+	}
+?>
+		<div class="content">
+		<h2>Админ-панель</h2>
+		<p><a href="admin.html?logout=true">Выход</a></p>
+		<h3 id="unclickable">Добавить статью</h3>
+		<form action="/admin.html" method="POST">
+		<input type="text" name="article_name" class="php__form_small" placeholder="Название"/ value="">
+		<textarea class="php__form_large" name="article_text" placeholder="Текст"/></textarea><br/>
+		<input type="submit" name="do_articlepost" class="php__form_submit" value="Добавить"><br><br>
+		</form>
+        
+	<?php } else {
+	$data = $_POST;
+	if( isset($data['do_adminlogin']) ){
+		$errors = array();
+		$userdata = mysqli_query($con, "SELECT * FROM `admin`");
+		$user = mysqli_fetch_assoc($userdata);
+		if (password_verify($data['pass'], $user['pass'])) {
+		if( $user ) {
+			if( password_verify($data['pass'], $user['pass']) ) {
+				$_SESSION['admin_user'] = $user;
+			} else {
+				$errors[] = 'Неверный логин или пароль';
+			}
+		} else {
+			$errors[] = 'Неверный логин или пароль';
+			echo $user['login'];
+		}
+		if( ! empty($errors) ) {
+			echo '<p style="color:red">' . array_shift($errors) . '</p>';
+		}
+		}
+	}
+	?>
+	<div class="content">
+        <h2>Админ-панель</h2>
+		<?php echo '<p style="color:red">' . $errors['0'] . '</p>'; ?>
+		<form action="/admin.html" method="POST">
+		<input type="text" name="login" class="php__form_small" placeholder="Логин"/ value="">
+		<input type="password" name="pass" class="php__form_small" placeholder="Пароль"/ value="">
+		<input type="submit" name="do_adminlogin" class="php__form_submit" value="Войти"><br><br>
+		</form>
+	<?php } ?>
+	</div></div>
+	</body>
+	</html>
